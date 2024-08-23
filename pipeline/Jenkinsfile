@@ -1,0 +1,15 @@
+pipeline {
+    agent {
+        docker {
+            image "nginx:latest"
+
+        }
+    }
+    stages {
+        stage('Clone Repo'){
+            steps {
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: '2bc8bce0-79f4-410c-bb18-18051c46ee94', url: 'https://gabrielmacielm@bitbucket.org/projectsgmorais/teste.git']])
+            }
+        }
+    }
+}
